@@ -1,7 +1,7 @@
 ;Purpose of this program is to bring automation to the desktop this is a fully customizable program
 ;This script is an autoit script(*.au3) which needs an needs autoit compiler
 ;List of features are mentioned at the end of this script
-;How to compile this file 
+;How to compile this file
 ;1 Run the program C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe_x64.exe
 ;2 Mention this as the path of the fine D:\Arun Dell\Other Files\Autoit scripts\myprogram.au3
 #include <Process.au3>
@@ -25,7 +25,7 @@ Global	$longtime = 0
 Global $sResult
 _Main()
 
-dim $search, $file, $var, $pflag,$connect 
+dim $search, $file, $var, $pflag,$connect
 dim $Text, $Rate, $Vol, $long
 dim $doscommandforrename
 
@@ -48,7 +48,7 @@ Func _Main() ; This is the main program
 
 ;						if (_WinAPI_CreateDirectory("D:\Arun Dell\Desktop Files\Week "& _WeekNumberISO())) then
 ;	If Not _WinAPI_MoveFileEx(@DesktopDir, "D:\Arun Dell\Desktop Files\Week"&_WeekNumberISO(),$MOVE_FILE_COPY_ALLOWED) Then
-;	EndIf						
+;	EndIf
 ;						_RunDos ("D:")
 ;						_RunDos ("cd D:\Arun Dell\Desktop Files")
 ;						$doscommandforrename = "ren Week"&_WeekNumberISO()&" Week_"&_WeekNumberISO()&" "
@@ -60,10 +60,10 @@ Func _Main() ; This is the main program
 ;	MsgBox(64, "|"&$dumpweekdayhere&"|", "|"&$dumpweekdayhere&"|")
 	if $testing = true then
 	else
-		TrayTip("Welcome Sir", "I am here to serve you", 30)	
+		TrayTip("Welcome Sir", "I am here to serve you", 30)
 ;		SplashTextOn("", "Good Morning sir today is "& $dumpweekdayhere &" Date "& $aTime[1], -1, -1, -1, -1, 32, "", 18)
 ;		speak("Good Morning sir today is" & String($dumpweekdayhere), 1, 100, false)
-;		speak(gettheweekday(),1,100,false)	
+;		speak(gettheweekday(),1,100,false)
 ;		Sleep(3000)
 ;		SplashOff()
 		$connect = _GetNetworkConnect()
@@ -83,22 +83,22 @@ Func _Main() ; This is the main program
 ;		speak("Open Clockwork app on mobile for pomodoro", 1, 100, false)
 		Sleep(3000)
 		SplashOff()
-		
-		
+
+
 ;		SplashImageOn("", "D:\Arun Dell\Photos\Personal Category\Text\Show\cruise control copy.jpg", 1366, 768,0,0,1)
 ;		Sleep(9000)
-;		SplashOff()		
+;		SplashOff()
 
 
-		
+
 		Local $ID = _WinAPI_GetUserGeoID()
 		;if 	((ConsoleWrite('ID:        0x' & Hex($ID) & @CRLF) = 23) and (ConsoleWrite('Latitude:  ' & ;_WinAPI_GetGeoInfo($ID, $GEO_LATITUDE) & @CRLF) = 18) and (ConsoleWrite('Longitude: ' & ;_WinAPI_GetGeoInfo($ID, $GEO_LONGITUDE) & @CRLF) = 20) and (ConsoleWrite('Name:      ' & ;_WinAPI_GetGeoInfo($ID, $GEO_FRIENDLYNAME) & @CRLF) = 26) and (ConsoleWrite('ISO code:  ' & ;_WinAPI_GetGeoInfo($ID, $GEO_ISO3) & @CRLF) = 16)) then
-		;		SplashTextOn("", "Welcome to The Playce", -1, -1, -1, -1, 32, "", 28) 
+		;		SplashTextOn("", "Welcome to The Playce", -1, -1, -1, -1, 32, "", 28)
 		;		Sleep(3000)
 		;		SplashOff()
-		;endif	
+		;endif
 
-	endif	; endif for tesing		
+	endif	; endif for tesing
 		; 1.Open the Excel file - Done
 		; 2. Read a record or value from sheet
 		; 2. Read the data into array
@@ -106,10 +106,10 @@ Func _Main() ; This is the main program
 		; Create application object and open an example workbook
 #CS
 		Local $oAppl = _Excel_Open()
-		If @error Then 
+		If @error Then
 			MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_RangeRead Example", "Error creating the Excel application object." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
-			Exit 
-		endif 
+			Exit
+		endif
 
 		Local $oWorkbook = _Excel_BookOpen($oAppl,"C:\Users\dell\Google Drive\Excel Collection\Daily Routine Iphone Mobile App time management[Conflict].XLS",true,false)
 		If @error Then
@@ -122,7 +122,7 @@ Func _Main() ; This is the main program
 		; *****************************************************************************
 		$sResult = _Excel_RangeRead($oWorkbook, Default, "AP3:AS30")
 ;		_ArrayDisplay($sResult, "Whats in the Excel sheet")
-		If @error Then 
+		If @error Then
 			MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_RangeRead Example 1", "Error reading from workbook." & @CRLF & "@error = " & @error & ", @extended = " & @extended)
 			MsgBox($MB_SYSTEMMODAL, "Excel UDF: _Excel_RangeRead Example 1", "Data successfully read." & @CRLF & "Value of cell A1: " & $sResult)
 			Exit
@@ -154,15 +154,15 @@ Func _GetNetworkConnect() ; Checks the internet connection
     Local Const $NETWORK_ALIVE_LAN = 0x1  ;net card connection
     Local Const $NETWORK_ALIVE_WAN = 0x2  ;RAS (internet) connection
     Local Const $NETWORK_ALIVE_AOL = 0x4  ;AOL
-    
+
     Local $aRet, $iResult
-    
+
     $aRet = DllCall("sensapi.dll", "int", "IsNetworkAlive", "int*", 0)
-    
+
     If BitAND($aRet[1], $NETWORK_ALIVE_LAN) Then $iResult &= "LAN connected" & @LF
     If BitAND($aRet[1], $NETWORK_ALIVE_WAN) Then $iResult &= "WAN connected" & @LF
     If BitAND($aRet[1], $NETWORK_ALIVE_AOL) Then $iResult &= "AOL connected" & @LF
-    
+
     Return $iResult
 EndFunc
 
@@ -188,7 +188,7 @@ Func TogglePause(); Toggles the floating message
 		else
 ;			run("C:\Program Files (x86)\BitTorrent\BitTorrent.exe","",@SW_MINIMIZE)
 		endif
-		
+
 		if ProcessExists("BitTorrent.exe") then
 			WinClose("[CLASS:Chrome_WidgetWin_1]")
 			processclose("WallpaperCycler Lite.exe")
@@ -213,7 +213,7 @@ Func TogglePause(); Toggles the floating message
 			processclose("C:\Program Files (x86)\Skynergy\HotKeyz\HotKeyz.exe")
 		else
 		endif
-		
+
 		if WinExists("[TITLE:VLC; CLASS:QWidget]") then
 	;		MsgBox($MB_SYSTEMMODAL, "", "VLC is running")
 			WinClose("[CLASS:SunAwtFrame]")
@@ -237,7 +237,7 @@ Func idlecomputer() ; Execute stuff on idle time on computer
 		minimizefunction()
 		Movemyfiles()
 		killallprocesses()
-	endif	
+	endif
 Endfunc
 
 Func minimizefunction() ; Minimize all the windows in idle time
@@ -247,7 +247,7 @@ Func minimizefunction() ; Minimize all the windows in idle time
 	SplashOff()
 	send("!{SPACE}n")
 	send("{"ESC"}")
-	WinMinimizeAll( )	
+	WinMinimizeAll( )
 
 EndFunc
 
@@ -262,13 +262,13 @@ EndFunc
 func runfoodporn() ; Displays images in random sequence
 	Local $sDestination = randomfile()
 ;	 MsgBox(48, "Warning", $sDestination)
-	speak("It is time for some food porn", 1, 100, false)	
+	speak("It is time for some food porn", 1, 100, false)
 	SplashImageOn("", $sDestination, 1366, 768,0,0,1)
 ;	SplashImageOn("", $sDestination,,,,,1)
 ;	SplashImageOn("", $sDestination)
 	WinSetTrans("Splash Screen", "", 500)
 	Sleep(3000)
-	SplashOff()	
+	SplashOff()
 endfunc
 
 func randomfile() ; Gets random files from specified folder
@@ -283,14 +283,14 @@ func randomfile() ; Gets random files from specified folder
         Exit
     EndIf
 
-	
+
     If UBound($aFiles) > 1 Then
         $Index = Random(1, UBound($aFiles), 1)
         If $Index > UBound($aFiles) - 1 Then $Index = UBound($aFiles) - 1
 ;        MsgBox(262208, '', 'Current (Random) Index = ' & $Index & @LF & 'Array Elements Left = ' & UBound($aFiles))
-	endif	
+	endif
     ; Display the results returned by _FileListToArray.
- ;   _ArrayDisplay($aFiles, "$aFiles")		
+ ;   _ArrayDisplay($aFiles, "$aFiles")
 ;		MsgBox(262208, '', 'File Name  = ' & $aFiles[$Index])
 	return $sDir & $aFiles[$Index]
 Endfunc
@@ -303,7 +303,7 @@ Func _ArrayRandomShuffle(ByRef $aArray)
     Next
 EndFunc
 
-Func movefilesthrough() ;moves and organizes the files 
+Func movefilesthrough() ;moves and organizes the files
 
 ;~ 						If $search = -1 Then
 ;~ 							MsgBox(0, "Error", "No files/directories matched the search pattern")
@@ -311,7 +311,7 @@ Func movefilesthrough() ;moves and organizes the files
 ;~ 						EndIf
 
 						While 1
-							
+
 							;~ if title = ECD(1)/000 send key for user id and password
 							$file = FileFindNextFile($search)
 								MsgBox(0, "", @error)
@@ -330,7 +330,7 @@ Func movefilesthrough() ;moves and organizes the files
 ;~ 									FileClose($handle)
 ;~ 								endif
 									$var = FileSelectFolder("Choose a folder.", "F:\Arun\Photos\",1,"F:\Arun\Photos\")
-									FileMove ( $file, $var,0)				
+									FileMove ( $file, $var,0)
 							EndIf
 						WEnd
 						; Close the search handle
@@ -342,16 +342,16 @@ Func subtimeroutine($passedrowcount)
 ;	Local $brokentime = StringSplit($sResult[$passedrowcount,3],":")
 ;	MsgBox(48, "HOUR", @HOUR)
 ;	MsgBox(48, "MIN", @MIN)
-;	MsgBox(48, "Row count", $passedrowcount)	
+;	MsgBox(48, "Row count", $passedrowcount)
 ;	_ArrayDisplay($sResult, "Whats in the Excel sheet")
 ;	MsgBox(48, "Hour from sheet", $sResult[$passedrowcount][2])
 ;	MsgBox(48, "Min from sheet", $sResult[$passedrowcount][3])
 	 if @HOUR = StringFormat("%02i",$sResult[$passedrowcount][2]) then
 ;	MsgBox(48, "Warning", "We are here")	 x
 		 if @MIN < StringFormat("%02i",$sResult[$passedrowcount][3]) then
-;	MsgBox(48, "Warning", $sResult[$passedrowcount][0])	 		 
+;	MsgBox(48, "Warning", $sResult[$passedrowcount][0])
 ;			 ToolTip($sResult[$passedrowcount][0])
-					ToolTip(StringFormat("%s",$sResult[$passedrowcount][0]),0,500,StringFormat("%s",$sResult[$passedrowcount][0]),0,4)			 
+					ToolTip(StringFormat("%s",$sResult[$passedrowcount][0]),0,500,StringFormat("%s",$sResult[$passedrowcount][0]),0,4)
 ;			exit
 		endif
 	endif
@@ -408,81 +408,81 @@ Func timeroutine() ; daily time routines
 					for $rowcount = 15 to 27
 ;						subtimeroutine($rowcount)
 						MsgBox(48, "HOUR", @HOUR)
-						MsgBox(48, "Cell", $sResult[$rowcount][2])					
+						MsgBox(48, "Cell", $sResult[$rowcount][2])
 ;						subtimeroutine($rowcount)
 						if @HOUR = StringFormat("%02i",$sResult[$rowcount][2]) then
 							if @MIN < StringFormat("%02i",$sResult[$rowcount][3]) then
 								ToolTip(StringFormat("%s",$sResult[$rowcount][0]),0,500,StringFormat("%s",$sResult[$rowcount][0]),0,4)
 								ExitLoop
 							endif
-						endif						
+						endif
 					Next
-				endif			
-#CE				
-				
+				endif
+#CE
+
 
    				Select
-						MsgBox(48, "Warning", "Reached here1")				
-					Case @HOUR = 5 and (@MIN >= 30 and @MIN <=45)	
+						MsgBox(48, "Warning", "Reached here1")
+					Case @HOUR = 5 and (@MIN >= 30 and @MIN <=45)
 						speak("It must be feeling great to get up early in the morning", 1, 100, false)
 					;	ToolTip("Feels Great to get up early Good Morning",0,500,"Non Committed Time",0,4)
 						ToolTip("Go to Toilet",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 5 and @MIN >= 45	
+					Case @HOUR = 5 and @MIN >= 45
 						speak("It is time to change for exercise", 1, 100, false)
 						ToolTip("It is time to change for exercise",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 6 and (@MIN >= 0 and @MIN <= 10)	
+					Case @HOUR = 6 and (@MIN >= 0 and @MIN <= 10)
 						speak("It is time to hit the gym", 1, 100, false)
 						ToolTip("It is time to hit the gym",0,500,"Non Committed Time",0,4)
 					Case (@HOUR = 6 and @MIN >= 10) or (@HOUR = 7 and @MIN <= 10)
 						speak("It is time to do P90X or Zombie Run", 1, 100, false)
-						ToolTip("P90X or Zombie Run",0,500,"Non Committed Time",0,4)						
+						ToolTip("P90X or Zombie Run",0,500,"Non Committed Time",0,4)
 					Case @HOUR = 7 and (@MIN >= 10 and @MIN <= 20)
 						speak("Back from the gym", 1, 100, false)
 						ToolTip("Back from the gym",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 7 and (@Min >= 20 and @Min <= 40 )	
+					Case @HOUR = 7 and (@Min >= 20 and @Min <= 40 )
 						speak("It is time to have a bath", 1, 100, false)
 						ToolTip("Bathing time",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 7 and (@Min >= 40 and @Min <= 55 )	
+					Case @HOUR = 7 and (@Min >= 40 and @Min <= 55 )
 						speak(" It is time to change cloths", 1, 100, false)
-						ToolTip("Change Cloths",0,500,"Non Committed Time",0,4)						
-					Case (@HOUR = 7 and @MIN >= 55) or  (@HOUR = 8 and @MIN >= 10)	
+						ToolTip("Change Cloths",0,500,"Non Committed Time",0,4)
+					Case (@HOUR = 7 and @MIN >= 55) or  (@HOUR = 8 and @MIN >= 10)
 						speak(" It is time for breakfast", 1, 100, false)
 						ToolTip("Breakfast time",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 8 and(@MIN >= 10 and @MIN <= 20)	
+					Case @HOUR = 8 and(@MIN >= 10 and @MIN <= 20)
 						speak("Read Newspaper", 1, 100, false)
 						ToolTip("Read Newspaper",0,500,"Non Committed Time",0,4)
-					Case (@HOUR = 8 and @MIN >= 20) or (@HOUR = 9 and @MIN <= 5)	
+					Case (@HOUR = 8 and @MIN >= 20) or (@HOUR = 9 and @MIN <= 5)
 						speak("Read Blog", 1, 100, false)
 						ToolTip("Read Blog",0,500,"Non Committed Time",0,4)
-					Case @HOUR = 9 and(@MIN >= 5 and @MIN <= 15)	
+					Case @HOUR = 9 and(@MIN >= 5 and @MIN <= 15)
 						speak(" Track share progress", 1, 100, false)
 						ToolTip("Track share progress",0,500,"Committed Time",0,4)
-					Case @HOUR = 9 and(@MIN >= 25 and @MIN <= 35)	
+					Case @HOUR = 9 and(@MIN >= 25 and @MIN <= 35)
 						speak("It is time to do mind sweeping", 1, 100, false)
 						ToolTip("Do mind sweep",0,500,"Committed Time",0,4)
-					Case @HOUR = 9 and(@MIN >= 35 and @MIN <= 45)	
+					Case @HOUR = 9 and(@MIN >= 35 and @MIN <= 45)
 						speak("It is time for expanding all project plans", 1, 100, false)
 						ToolTip("Expanding all project plans",0,500,"Committed Time",0,4)
-					Case (@HOUR = 9 and @MIN >= 45) or (@HOUR = 10 and @MIN <= 30)	
+					Case (@HOUR = 9 and @MIN >= 45) or (@HOUR = 10 and @MIN <= 30)
 						speak("It is time to check mail", 1, 100, false)
 						ToolTip("Check mail",0,500,"Committed Time",0,4)
 						;~ Open the gmail in chrome
 					Case ((@HOUR = 10 and @MIN >= 30) or (@HOUR = 12 and @MIN <= 30 )) or @HOUR = 11
 						speak("Work on the Project 1st Half Office", 1, 100, false)
-						ToolTip("Work on the Project - 1st Half Office work",0,500,"Committed Time",0,4)						
-					Case (@Hour = 12 and @MIN >= 30) or (@Hour = 13 and @MIN >= 30)	
+						ToolTip("Work on the Project - 1st Half Office work",0,500,"Committed Time",0,4)
+					Case (@Hour = 12 and @MIN >= 30) or (@Hour = 13 and @MIN >= 30)
 						speak("Lunch", 1, 100, false)
 						ToolTip("Lunch",0,500,"Committed Time",0,4)
 ;						runfoodporn()
-					Case (@HOUR = 13 and @MIN >= 30) or (@HOUR = 16 and @MIN <= 30) or @HOUR = 14 or @HOUR = 15	
+					Case (@HOUR = 13 and @MIN >= 30) or (@HOUR = 16 and @MIN <= 30) or @HOUR = 14 or @HOUR = 15
 						speak("Work on the Project - 2nd Half Office", 1, 100, false)
 						ToolTip("Work on the Project - 2nd Half Office",0,500,"Committed Time",0,4)
 ;							for $i = 500 to 1000 step 1
-;							    MsgBox(64, "Value", $i)								
+;							    MsgBox(64, "Value", $i)
 ;								ToolTip("Work on the Project - 2nd Half Office",0,$i,"Committed Time",0,4)
 ;								sleep (50)
 ;							next
-					Case (@HOUR = 16 and @MIN >= 30) or (@HOUR = 17 and @MIN <= 30)	
+					Case (@HOUR = 16 and @MIN >= 30) or (@HOUR = 17 and @MIN <= 30)
 						speak("Execute Hot List", 1, 100, false)
 						ToolTip("Execute Hot List",0,500,"Committed Time",0,4)
 					Case (@HOUR = 17 and @MIN >= 30) or (@HOUR = 18 and @MIN <= 15)
@@ -493,36 +493,36 @@ Func timeroutine() ; daily time routines
 						SplashImageOn("", "C:\Users\dell\Desktop\Daily Review.jpg", 320, 768,0,0,1)
 						Sleep(9000)
 						$dailyreviewdone  = true
-						SplashOff()		
+						SplashOff()
 						endif
 						speak("Execute Tasks in Mulund Context", 1, 100, true)
 						ToolTip("Execute Tasks in Mulund Context",0,500,"Committed Time",0,4)
-					Case @HOUR = 18 and (@MIN >= 15 and @MIN <= 45 )	
+					Case @HOUR = 18 and (@MIN >= 15 and @MIN <= 45 )
 						speak("Execute tasks at Home", 1, 100, true)
 						ToolTip("Execute Tasks at Home",0,500,"Committed Time",0,4)
-					Case ((@HOUR = 18  and @MIN >= 45) or (@HOUR  = 21 and @MIN < 15)) or @HOUR = 19 or @HOUR = 20	
+					Case ((@HOUR = 18  and @MIN >= 45) or (@HOUR  = 21 and @MIN < 15)) or @HOUR = 19 or @HOUR = 20
 						speak("Gap to do nothing", 1, 100, false)
 						ToolTip("Gap to do nothing",0,500,"Committed Time",0,4)
-					Case @HOUR = 21  and (@MIN >= 5 and @MIN <= 35)	
+					Case @HOUR = 21  and (@MIN >= 5 and @MIN <= 35)
 						speak("It is time for dinner", 1, 100, false)
-						ToolTip("Dinner time",0,500,"Non Committed Time",0,4)						
-					Case (@HOUR = 21  and @MIN >= 35) or (@HOUR = 22 and @MIN <= 35)	
+						ToolTip("Dinner time",0,500,"Non Committed Time",0,4)
+					Case (@HOUR = 21  and @MIN >= 35) or (@HOUR = 22 and @MIN <= 35)
 						speak("It is time to talk to Wify", 1, 100, false)
 						ToolTip("Talk to Wify",0,500,"Non Committed Time",0,4)
-					Case (@HOUR = 22  and @MIN >= 35) or (@HOUR = 23 and @MIN <= 35)	
+					Case (@HOUR = 22  and @MIN >= 35) or (@HOUR = 23 and @MIN <= 35)
 						speak("It is time for Book Reading", 1, 100, false)
-						ToolTip("Book Reading",0,500,"Non Committed Time",0,4)						
-					Case (@HOUR = 23  and @MIN >= 35) or (@HOUR = 23 and @MIN <= 45)	
+						ToolTip("Book Reading",0,500,"Non Committed Time",0,4)
+					Case (@HOUR = 23  and @MIN >= 35) or (@HOUR = 23 and @MIN <= 45)
 						speak("Use Elevate for learning", 1, 100, false)
-						ToolTip("Use Elevate for learning",0,500,"Non Committed Time",0,4)	
-					Case (@HOUR = 23  and @MIN >= 45) or (@HOUR = 23 and @MIN <= 55)	
+						ToolTip("Use Elevate for learning",0,500,"Non Committed Time",0,4)
+					Case (@HOUR = 23  and @MIN >= 45) or (@HOUR = 23 and @MIN <= 55)
 						speak("Take the days review", 1, 100, false)
 						ToolTip("Take the days review",0,500,"Non Committed Time",0,4)
-						
-#CE						
+
+#CE
 				EndSelect
    			Case 1
-			speak("It is Sunday today", 1, 100, true) 
+			speak("It is Sunday today", 1, 100, true)
    			ToolTip("Sunday",0,500,"Non Committed Time",0,4)
    		EndSwitch
 		Sleep(50000)
@@ -530,11 +530,11 @@ Func timeroutine() ; daily time routines
 
 
 #CS 	If @WDAY = 1  Then
-   	
-   	
+
+
    	Else
    		if @WDAY = 7 Then
-   			
+
    		Else
    			IF @HOUR <= 6 Then
    					ToolTip("Time to sleep",0,500,"Time to sleep",0,4)
@@ -546,9 +546,9 @@ Func timeroutine() ; daily time routines
    						Sleep(50000)
    					Else
    						ToolTip("Dinner time",0,500,"Dinner time",0,4)
-   						Sleep(50000)					
+   						Sleep(50000)
    					EndIf
-   				else	
+   				else
    						IF @HOUR >= 22 Then
    							if @MIN >= 30 Then
    								ToolTip("Dinner time",0,500,"Dinner time",0,4)
@@ -557,7 +557,7 @@ Func timeroutine() ; daily time routines
    								ToolTip("Time to go home",0,500,"Time to go home",0,4)
    								Sleep(50000)
    							EndIf
-   						Else	 	
+   						Else
    							IF @HOUR > 18 Then
    								if @HOUR = 18 And @MIN < 30 Then
    									ToolTip("Office time",0,500,"Office time",0,4)
@@ -565,7 +565,7 @@ Func timeroutine() ; daily time routines
    								Else
    									ToolTip("Time to go home",0,500,"Time to go home",0,4)
    									Sleep(50000)
-   								EndIf			
+   								EndIf
    							Else
    								if @HOUR >= 15 Then
    									if @MIN >= 30 Then
@@ -573,22 +573,22 @@ Func timeroutine() ; daily time routines
    										Sleep(50000)
    									Else
    										ToolTip("Office time",0,500,"Office time",0,4)
-   										Sleep(50000)									
+   										Sleep(50000)
    									EndIf
    								Else
    									if @HOUR >= 13 Then
    										if @MIN >= 30 Then
    											ToolTip("Lunch time",0,500,"Lunch time",0,4)
-   											Sleep(50000)									
+   											Sleep(50000)
    										Else
    											ToolTip("Welcome to Office",0,500,"Welcome to Office",0,4)
-   											Sleep(50000)										
+   											Sleep(50000)
    										EndIf
    									Else
    										IF @HOUR >= 9 Then
    												ToolTip("Welcome to Office",0,500,"Welcome to Office",0,4)
    												Sleep(50000)
-   										Else	
+   										Else
    											IF @HOUR >= 8 Then
    													ToolTip("Go to Office",0,500,"Go to Office",0,4)
    													Sleep(50000)
@@ -598,7 +598,7 @@ Func timeroutine() ; daily time routines
    														ToolTip("Bathing time",0,500,"Bathing time",0,4)
    														Sleep(50000)
    													Else
-   														
+
    														ToolTip("Breakfast time",0,500,"Breakfast time",0,4)
    														Sleep(50000)
    													EndIf
@@ -608,19 +608,19 @@ Func timeroutine() ; daily time routines
    																Sleep(50000)
    														EndIf
    												EndIf
-   											EndIf				
-   										EndIf					
+   											EndIf
+   										EndIf
    									EndIf
-   								EndIf	
+   								EndIf
    							EndIf
-   						EndIf			
-   					EndIf	
+   						EndIf
+   					EndIf
    				EndIf
    			EndIf
-   		EndIf	
+   		EndIf
 #CE
-		
-EndFunc	
+
+EndFunc
 
 func killallprocesses() ; Kill all the processes
 
@@ -628,7 +628,7 @@ func killallprocesses() ; Kill all the processes
 	For $i = 0 To UBound($aArray) - 1
 		If ProcessExists($aArray[$i]) Then ; Check if the Notepad process is running.
 ;			MsgBox($MB_SYSTEMMODAL, "", "Notepad is running")
-			speak("Closing all the Process", 1, 100, false) 
+			speak("Closing all the Process", 1, 100, false)
 			SplashTextOn("", "Closing Process - " & $aArray[$i], -1, -1, -1, -1, 32, "", 48)
 			Sleep(3000)
 			SplashOff()
@@ -639,7 +639,7 @@ func killallprocesses() ; Kill all the processes
 Endfunc
 
 Func _Quit() ; key for quitting the program
-	speak("Have a good day bye", 1, 100, false) 
+	speak("Have a good day bye", 1, 100, false)
 	SplashTextOn("", "Have a good day", -1, -1, -1, -1, 32, "", 48)
 	Sleep(3000)
 	SplashOff()
@@ -653,7 +653,7 @@ Func checkforwindowsandprocesses() ; check of the windows and process is running
 		SplashTextOn("", "Automatically Running Time Snapper in background", -1, -1, -1, -1, 32, "", 18)
 		Run("C:\Program Files (x86)\TimeSnapper Classic\TimeSnapper.exe", "", @SW_MAXIMIZE)
 	EndIf
-	
+
     ; Test if the window exists and display the results.
     If WinExists("[CLASS:SunAwtFrame]") Then
 ;		runpomodoro()
@@ -677,9 +677,9 @@ Func runpomodoro() ; Run pomodoro
 		If BitAND($iState, 2) Then
 		Else
 			SplashTextOn("", "To Mighty is minimized" & @CRLF & "Run the next Pomodoro", -1, -1, -1, -1, 32, "", 14)
-;			MsgBox($MB_SYSTEMMODAL, "", "To Mighty is minimized, Run the next Pomodoro" & $iState)		
+;			MsgBox($MB_SYSTEMMODAL, "", "To Mighty is minimized, Run the next Pomodoro" & $iState)
 			WinFlash($hWnd, "", 4, 500)
-			
+
 		EndIf
 EndFunc
 
@@ -697,7 +697,7 @@ Func speak($Text, $Rate, $Vol, $long) ; computer speaks out the message
 			endif
 		else
 			$voice.speak($Text)
-		endif	
+		endif
 	endif
 EndFunc
 
@@ -720,7 +720,7 @@ Func gettheweekday() ; Show the weekday like monday, tuesday etc.
    	EndSwitch
 EndFunc
 
-;Feature list 
+;Feature list
 #CS
 		Done - Add a traytip with some message
 		Done - tomighty gets restarted all of a sudden
@@ -735,6 +735,9 @@ EndFunc
 		Done - Add subliminal quote and messages - Screensaver added
 		Done - Remove Pomodor warning message starting of pomodoro as I am using Clockwork app on mobile
 
+		Planned - Make a GUI setting dialog box, use right click of system tray activate it
+
+		Planned - Hide/delete all the unused rows in the excel sheets from local drives and from google docs too
 		Planned - Make Tooptip, slide to apper and disapper after every 15 min
 		Planned - Automatically start google sync, when it gets closed
 		Planned - Have tooltip for cursor and with something quotes, time etc.
@@ -751,24 +754,24 @@ EndFunc
 		Planned - Get google calender items displayed in message
 		Planned - Upload the file on the GitHub, Find out how to sync the file on Git hub
 		Broken - Toggle (with apostrophy key) fails notification message comes back after sometime.
-		Broken - Run housekeeping activity when the PC is idea for more then 10 minutes 
-			Delete duplicate files 
-			Delete duplicate files 
-				Music 
+		Broken - Run housekeeping activity when the PC is idea for more then 10 minutes
+			Delete duplicate files
+			Delete duplicate files
+				Music
 			Delete empty folders
 			Run anti-virus
 			Run defragging
 		Planned - Get the routine list displayed in between and in ideal time
-		Planned - activate kukuclock past 11 
+		Planned - activate kukuclock past 11
 		Planned - if chrome is not present and computer is idel run torrent at night
 		Planned - Delay the routine - say using slide etc. in case if delay is happening
 		Planned - Lower volume to 20% if at the playce, zero if at Welingkar
 		Planned - if myprogram is already running, close the old and start the new one
 		Planned - Check the background app and run those which are not running
-		Broken - Fix the apostrophe hotkey for toggle on and off. 
+		Broken - Fix the apostrophe hotkey for toggle on and off.
 		Broken - Unknown function name
 
-		Planned - Check for gmail and facebook usage over chrome if more then once. 
+		Planned - Check for gmail and facebook usage over chrome if more then once.
 		Planned - Use auto pause when the mails goes down to zero.
 		Planned - Check if toodledo was processed or not everyday
 		Planned - Check if timesnapper is started or not
