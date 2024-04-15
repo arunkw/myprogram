@@ -3,7 +3,7 @@
 ;List of features are mentioned at the end of this script
 ;How to compile this file
 ;1 Run the program C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe_x64.exe
-;2 Mention this as the path of the fine D:\Arun Dell\Other Files\Autoit scripts\myprogram.au3
+;2 Mention this as the path of the file D:\Arun Dell\Other Files\Autoit scripts\myprogram.au3
 #include <Process.au3>
 ;#include <ACN_BlockInputEx.au3> ; Error in opening the file
 #include <WinNet.au3>
