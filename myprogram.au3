@@ -2,6 +2,7 @@
 ;This script is an autoit script(*.au3) which needs an needs autoit compiler
 ;List of features are mentioned at the end of this script
 ;How to compile this file
+;0 Close any running instance of this program from killing it from system tray
 ;1 Run the program C:\Program Files (x86)\AutoIt3\Aut2Exe\Aut2exe_x64.exe run in admin mode
 ;2 Mention this as the path of the file C:\Users\ADMIN\Dropbox\All Other Data\All Autoit scripts\myprogram.au3
 ;3 Put the exe file in this folder - "C:\Program Files\MyProgram.exe"
